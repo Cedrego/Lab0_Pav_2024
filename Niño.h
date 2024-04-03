@@ -1,3 +1,4 @@
+#include <iostring>
 #include <string>
 class Niño
 {
