@@ -5,4 +5,4 @@ class DTObjetoRoto{
         string NombreObjeto;
         bool Prestado;
         string NombreNinio;
-}
+};
