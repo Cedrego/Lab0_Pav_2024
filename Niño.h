@@ -13,7 +13,7 @@ public:
    // STD::string Set();
 };
 /*
-Niño::Niño(/* args */)/*{
+Niño::Niño(/* args *//*{
 }
 
 Niño::~Niño()
