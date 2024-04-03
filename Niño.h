@@ -1,4 +1,5 @@
 #include <string>
+
 class Niño
 {
 private:
@@ -9,7 +10,7 @@ private:
 
 public:
     //ListarObjetosPrestados();
-   // string Set();
+   // STD::string Set();
 };
 /*
 Niño::Niño(/* args */)/*{
