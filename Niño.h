@@ -1,4 +1,5 @@
 #include <string>
+
 class Niño
 {
 private:
@@ -18,4 +19,4 @@ Niño::Niño(/* args */)/*{
 Niño::~Niño()
 {
 }
-*/
+*/#include <string>
