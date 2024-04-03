@@ -3,14 +3,14 @@
 class Niño
 {
 private:
-    string Nombre;
+    STD::string Nombre;
     int Edad;
-    string Direccion;
-    string Telefono;
+    STD::string Direccion;
+    STD::string Telefono;
 
 public:
     //ListarObjetosPrestados();
-   // string Set();
+   // STD::string Set();
 };
 /*
 Niño::Niño(/* args */)/*{
