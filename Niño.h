@@ -1,7 +1,12 @@
+#include <string>
 class Niño
 {
 private:
-    /* data */
+    string Nombre;
+    int Edad;
+    string Direccion;
+    string Telefono;
+
 public:
     Niño(/* args */);
     ~Niño();
