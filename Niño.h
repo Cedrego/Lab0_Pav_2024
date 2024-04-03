@@ -8,14 +8,14 @@ private:
     string Telefono;
 
 public:
-    Niño(/* args */);
-    ~Niño();
+    //ListarObjetosPrestados();
+   // string Set();
 };
-
-Niño::Niño(/* args */)
-{
+/*
+Niño::Niño(/* args */)/*{
 }
 
 Niño::~Niño()
 {
 }
+*/
