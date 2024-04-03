@@ -1,5 +1,5 @@
-#include "string.h"
 #include "ESTADO.h"
+#include <string>
 
 class static Objeto{
     protected:
