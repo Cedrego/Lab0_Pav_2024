@@ -1,5 +1,5 @@
+#include <iostring>
 #include <string>
-
 class Niño
 {
 private:
@@ -12,11 +12,4 @@ public:
     //ListarObjetosPrestados();
    // STD::string Set();
 };
-/*
-Niño::Niño(/* args *//*{
-}
 
-Niño::~Niño()
-{
-}
-*/
