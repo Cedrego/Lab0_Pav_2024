@@ -3,20 +3,20 @@
 class Niño
 {
 private:
-    string Nombre;
+    std::string Nombre;
     int Edad;
-    string Direccion;
-    string Telefono;
+    std::string Direccion;
+    std::string Telefono;
 
 public:
     //ListarObjetosPrestados();
-   // string Set();
+   // STD::string Set();
 };
 /*
-Niño::Niño(/* args */)/*{
+Niño::Niño(/* args *//*{
 }
 
 Niño::~Niño()
 {
 }
-*/#include <string>
+*/

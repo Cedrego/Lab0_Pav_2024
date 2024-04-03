@@ -1,11 +1,11 @@
 #include "ESTADO.h"
 #include <string>
 
-static class Objeto{
+class Objeto{
     protected:
-        string Nombre;
+        std::string Nombre;
         int AñoComprado;
         ESTADO Estado;
     public:
-    static string toString();
+    virtual std::string toString();
 };
