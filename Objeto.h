@@ -7,5 +7,5 @@ class Objeto{
         int AñoComprado;
         ESTADO Estado;
     public:
-    static std::string toString();
+    virtual std::string toString();
 };
