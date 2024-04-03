@@ -1,9 +1,11 @@
 #include "ESTADO.h"
 #include <string>
 
-class static Objeto{
+static class Objeto{
     protected:
         string Nombre;
         int AñoComprado;
         ESTADO Estado;
+    public:
+    static string toString();
 };
