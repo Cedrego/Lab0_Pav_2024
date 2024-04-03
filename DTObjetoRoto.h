@@ -2,7 +2,7 @@
 
 class DTObjetoRoto{
     private:
-        string NombreObjeto;
+        std::string NombreObjeto;
         bool Prestado;
-        string NombreNiño;
+        std::string NombreNiño;
 };

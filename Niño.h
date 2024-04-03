@@ -2,10 +2,10 @@
 class Niño
 {
 private:
-    string Nombre;
+    std::string Nombre;
     int Edad;
-    string Direccion;
-    string Telefono;
+    std::string Direccion;
+    std::string Telefono;
 
 public:
     //ListarObjetosPrestados();

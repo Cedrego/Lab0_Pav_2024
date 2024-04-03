@@ -3,7 +3,7 @@
 class Libro : public Objeto{
     private:
         int CantPaginas;
-        string Autor;
+        std::string Autor;
     public:
-        string toString();
+        std::string toString();
 };
