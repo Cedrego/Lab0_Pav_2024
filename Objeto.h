@@ -4,7 +4,7 @@
 class Objeto{
     protected:
         std::string Nombre;
-        int AñoComprado;
+        int AnioComprado;
         ESTADO Estado;
     public:
     virtual std::string toString();
