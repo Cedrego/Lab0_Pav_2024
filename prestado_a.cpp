@@ -9,9 +9,9 @@ Niño::Niño(std::string Nom2, int Edad, std::string Direccion,std::string Telef
     this->Direccion=Direccion;
     this->Telefono=Telefono;
 };
- //no me acuerdo cual era xD "¿ Eres el Niño: " + this->Nombre + ", "+ (this->Edad)+ ", " +(this->Direccion)+ ", "+ (this->Telefono) ?";
- // en caso de no ser, pregunta si quiere arreglar la informacion o salir
- // si es va a poner el objeto
+ /*no me acuerdo cual era xD "¿ Eres el Niño: " + this->Nombre + ", "+ (this->Edad)+ ", " +(this->Direccion)+ ", "+ (this->Telefono) ?";
+ en caso de no ser, pregunta si quiere arreglar la informacion o salir
+ si es va a poner el objeto*/
  //bool verdadero(true){
 Objeto::Objeto(std::string Nom,int AnioComprado,ESTADO Estado){
     this->Nombre=Nom;
@@ -24,6 +24,7 @@ Objeto::Objeto(std::string Nom,int AnioComprado,ESTADO Estado){
  bool verdadero(false) o (true);
 }
 para bool true
+une el objeto al niño
 return "disfrute su prestamo";
 para bool false
 return "Prestamo cancelado"*/
