@@ -5,12 +5,12 @@ using namespace std;
 
 class Objeto{
     private:
-        std::string nombreObjeto;
-        int anioCompra;
-        ESTADO estadoObjeto; //enum definido en ESTADO.h
+        std::string Nom;
+        int AnioComprado;
+        ESTADO Estado; //enum definido en ESTADO.h
     public: 
         Objeto::Objeto(); //constructor sin parametros
-        Objeto::Objeto(std::string nombreObjeto, int anioCompra, ESTADO estadoObjeto); //constructor con parametros
+        Objeto::Objeto(std::string Nom, int AnioComprado, ESTADO Estado); //constructor con parametros
         Objeto::~Objeto();
-
+        std::string toString();
 };
