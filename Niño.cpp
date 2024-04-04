@@ -7,6 +7,8 @@ Niño::Niño(std::string Nom2, int Edad, std::string Direccion, std::string Tele
     this->Edad=Edad;
     this->Direccion=Direccion;
     this->Telefono=Telefono;
-    //ListarObjetosPrestados();
+    Objeto ListarObjetosPrestados(){ //no sé por que marca error aca, literalmente no hay nada
+        //despues lo resuelvo - Franco
+    };
     //STD::string Set();
 };

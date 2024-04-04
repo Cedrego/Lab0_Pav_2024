@@ -9,5 +9,5 @@ Libro::Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std:
 };
 Libro::~Libro(){};
 std::string toString(){
-    return "Libro: " + this->Nombre + ", "+ (this->AnioComprado)+ ", " +(this->Estado)+ ", "+ this->Autor +", "+(this->CantPaginas);
+    return "Libro: " + this->Nom + ", "+ (this->AnioComprado)+ ", " +(this->Estado)+ ", "+ this->Autor +", "+(this->CantPaginas);
 };

@@ -7,5 +7,5 @@ class Libro : public Objeto{
     public:
         Libro();
         Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std::string Autor);
-        std::string toString();
+        virtual std::string toString();
 };

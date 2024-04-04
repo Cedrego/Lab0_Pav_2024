@@ -5,5 +5,5 @@ class JuegoMesa : public Objeto{
         int EdadRecomendada;
         int CantJugadores;
     public:
-        std::string toString();
+        virtual std::string toString();
 };
