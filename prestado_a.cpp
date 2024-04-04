@@ -1,9 +1,10 @@
 #include "Objeto.h"
 #include "Niño.h"
 #include <string>
+#include <iostream>
 bool verdadero(false);
 string respuesta;
-using namespace prestado_a;
+using namespace std;
 Niño::Niño(){};
 Niño::Niño(std::string Nom2, int Edad, std::string Direccion,std::string Telefono){
     this->Nombre=Nom2;
@@ -32,10 +33,11 @@ if(respuesta=='N'){
 if(respuesta=='Y'){
 //une el objeto al niño
 return "Disfrute de su prestamo";
-};
+}
 else{
     if(respuesta=='N'){
 return "Prestamo Cancelado";
-};
+}
 else{ return "Error"};
-};
+}
+;
