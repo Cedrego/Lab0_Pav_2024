@@ -3,7 +3,9 @@
 class Libro : public Objeto{
     private:
         int CantPaginas;
-        string Autor;
+        std::string Autor;
     public:
-        string toString();
+        Libro();
+        Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std::string Autor);
+        std::string toString();
 };
