@@ -19,5 +19,5 @@ añadir Niño
 Añadir Objeto
 elegir Prestar Objeto
 */
-    return 0
-};
+    return 0;
+}
