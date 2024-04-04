@@ -12,7 +12,7 @@ Niño::Niño(std::string Nom2, int Edad, std::string Direccion,std::string Telef
     this->Direccion=Direccion;
     this->Telefono=Telefono;
 
-    cout <<"¿ Eres el Niño: "<< Nom2<< " - "<<Edad<<" - "<< Direccion <<" - " << Telefono << "/n" <<"   ¿ Y - N ?";
+    cout <<"¿ Eres el Niño: "<< Nom2<< " - "<<Edad<<" - "<< Direccion <<" - " << Telefono << "\n" <<"   ¿ Y - N ?";
     cin >> respuesta;
     if(strcmp(respuesta,'N')==0){
         return "Niño no encontrado";
@@ -28,7 +28,7 @@ Niño::Niño(std::string Nom2, int Edad, std::string Direccion,std::string Telef
         this->Estado=Estado;
         };
     };
-    cout << "¿Quieres el Objeto: " << Nom <<" - "<< AnioComprado <<" - " << Estado << /n <<"   ¿ Si - No ?" ;
+    cout << "¿Quieres el Objeto: " << Nom <<" - "<< AnioComprado <<" - " << Estado << "\n" <<"   ¿ Si - No ?" ;
         cin >> respuesta;
     if(respuesta=='Y'){
     //une el objeto al niño
@@ -44,3 +44,7 @@ Niño::Niño(std::string Nom2, int Edad, std::string Direccion,std::string Telef
 */
 
 //Esto que es? porque crea ambas entidades?
+
+
+// si estas cuando nosotros te explico
+// esto tiene que unirlas, lo puse que las creara para poder tener la idea basica pero como no c como unir las entidades pues
