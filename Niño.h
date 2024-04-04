@@ -9,7 +9,7 @@ private:
     std::string Telefono;
 
 public:
-    //ListarObjetosPrestados();
-   // STD::string Set();
+    /*ListarObjetosPrestados();
+    STD::string Set();*/
 };
 

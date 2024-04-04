@@ -6,4 +6,3 @@ class DTObjetoRoto{
         bool Prestado;
         std::string NombreNiño;
 };
-//a
