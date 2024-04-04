@@ -3,7 +3,7 @@
 #include <string>
 bool verdadero(false);
 string respuesta;
-using namespace prestado;
+using namespace prestado_a;
 Niño::Niño(std::string Nom2, int Edad, std::string Direccion,std::string Telefono){
     this-Nombre=Nom2;
     this->Edad=Edad;
