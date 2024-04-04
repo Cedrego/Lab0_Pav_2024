@@ -4,9 +4,7 @@ using namespace std;
 #include <iostream>
 Libro::Libro(){};
 Libro::Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std::string Autor){
-    this->Nombre=Nom;
-    this->AnioComprado=AnioComprado;
-    this->Estado=Estado;
+    Objeto(Nom,AnioComprado,Estado);
     this->CantPaginas=CantPaginas;
     this->Autor=Autor;
 };
