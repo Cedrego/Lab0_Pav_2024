@@ -1,1 +1,1 @@
-// vacio como el corazon de ella
+// vacio como el corazon de ella . De que hablas ella no tiene un corazon, tiene un cacho de carbon mas negro que el culo de un pinguino en san lorenzo.
