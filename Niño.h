@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
+using namespace std;
 
-<<<<<<< HEAD
 class Niño{
     private:
         std::string Nombre;
@@ -9,12 +9,9 @@ class Niño{
         std::string Direccion;
         std::string Telefono;
     public:
+        Niño::Niño();
+        Niño::Niño(std::string Nom2, int Edad, std::string Direccion, std::string Telefono){
         //ListarObjetosPrestados();
-        // STD::string Set();
-=======
-public:
-    /*ListarObjetosPrestados();
-    STD::string Set();*/
->>>>>>> 983030e8076d645b850aff8d702482fe79026084
+        //STD::string Set();
 };
 

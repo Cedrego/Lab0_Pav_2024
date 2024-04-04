@@ -1,5 +1,5 @@
-using namespace std;
 #include "Niño.h"
+using namespace std;
 
 Niño::Niño(){};
 Niño::Niño(std::string Nom2, int Edad, std::string Direccion, std::string Telefono){
