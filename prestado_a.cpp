@@ -4,8 +4,9 @@
 bool verdadero(false);
 string respuesta;
 using namespace prestado_a;
+Niño::Niño(){};
 Niño::Niño(std::string Nom2, int Edad, std::string Direccion,std::string Telefono){
-    this-Nombre=Nom2;
+    this->Nombre=Nom2;
     this->Edad=Edad;
     this->Direccion=Direccion;
     this->Telefono=Telefono;
@@ -19,10 +20,11 @@ if(respuesta=='N'){
 }else{return "Error"; }
 };
  if(verdadero=true){
-Objeto::Objeto(std::string Nom,int AnioComprado,ESTADO Estado){
-    this->Nombre=Nom;
-    this->AnioComprado=AnioComprado;
-    this->Estado=Estado;
+    Objeto::Objeto(){};
+    Objeto::Objeto(std::string Nom,int AnioComprado,ESTADO Estado){
+     this->Nombre=Nom;
+     this->AnioComprado=AnioComprado;
+     this->Estado=Estado;
     };
 };
  cout << "¿Quieres el Objeto: " << Nom <<" - "<< AnioComprado <<" - " << Estado << /n <<"   ¿ Si - No ?" ;
