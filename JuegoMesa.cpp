@@ -9,6 +9,3 @@ JuegoMesa::JuegoMesa(std::string Nom,int AnioComprado,ESTADO Estado,int CantJuga
     this->EdadRecomendada=EdadRecomendada;
 };
 JuegoMesa::~JuegoMesa(){};
-std::string toString(){
-    return "JuegoMesa: " + this->Nombre + ", "+ (this->AnioComprado)+ ", " +(this->Estado)+ ", "+ this->EdadRecomendada +", "+(this->CantJugadores);
-};

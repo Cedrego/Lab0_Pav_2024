@@ -8,6 +8,3 @@ Libro::Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std:
     this->Autor=Autor;
 };
 Libro::~Libro(){};
-std::string toString(){
-    return "Libro: " + this->Nom + ", "+ (this->AnioComprado)+ ", " +(this->Estado)+ ", "+ this->Autor +", "+(this->CantPaginas);
-};

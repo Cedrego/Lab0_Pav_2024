@@ -4,7 +4,7 @@
 using namespace std;
 
 class Objeto{
-    private:
+    protected:
         std::string Nom;
         int AnioComprado;
         ESTADO Estado; //enum definido en ESTADO.h
