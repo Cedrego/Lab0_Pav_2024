@@ -1,6 +1,7 @@
-using namespace std;
 #include "Libro.h"
 #include <iostream>
+using namespace std;
+
 Libro::Libro(){};
 Libro::Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std::string Autor){
     Objeto(Nom,AnioComprado,Estado);
