@@ -13,7 +13,6 @@ Eliminar Objeto
 Prestar Objeto
 Listar Objetos Prestados
 Listar Objetos Rotos
-
 loop al 
 añadir Niño
 Añadir Objeto
