@@ -9,7 +9,7 @@ JuegoMesa::JuegoMesa(std::string Nom,int AnioComprado,ESTADO Estado,int CantJuga
     this->EdadRecomendada=EdadRecomendada;
 };
 JuegoMesa::~JuegoMesa(){};
- std::string toString(){
+ std::string JuegoMesa::toString(){
     return "Libro: " + Nom + ", " 
     + std::to_string(AnioComprado) + ", " //to_string() != toString()
     + std::to_string(Estado) + ", "       //to_string() es parte de std

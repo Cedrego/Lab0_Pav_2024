@@ -9,7 +9,7 @@ Libro::Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std:
     this->Autor=Autor;
 };
 Libro::~Libro(){};
-string toString(){
+string Libro::toString(){
         return "Libro: " + this->Nom + ", " 
         + std::to_string(this->AnioComprado) + ", " //to_string() != toString()
         + std::to_string(this->Estado) + ", "       //to_string() es parte de std
