@@ -4,7 +4,7 @@
 using namespace std;
 
 class Objeto{
-    private:
+    protected:
         std::string Nom;
         int AnioComprado;
         ESTADO Estado; //enum definido en ESTADO.h
@@ -12,5 +12,5 @@ class Objeto{
         Objeto::Objeto(); //constructor sin parametros
         Objeto::Objeto(std::string Nom, int AnioComprado, ESTADO Estado); //constructor con parametros
         Objeto::~Objeto();
-        std::string toString();
+        virtual std::string toString();
 };

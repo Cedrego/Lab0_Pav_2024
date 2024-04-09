@@ -1,6 +1,7 @@
-using namespace std;
 #include "Libro.h"
 #include <iostream>
+using namespace std;
+
 Libro::Libro(){};
 Libro::Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std::string Autor){
     Objeto(Nom,AnioComprado,Estado);
@@ -8,6 +9,11 @@ Libro::Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std:
     this->Autor=Autor;
 };
 Libro::~Libro(){};
-std::string toString(){
-    return "Libro: " + this->Nombre + ", "+ (this->AnioComprado)+ ", " +(this->Estado)+ ", "+ this->Autor +", "+(this->CantPaginas);
-};
+
+std::string Libro::toString(){
+    return "Libro: " + Nom + ", " 
+    + std::to_string(AnioComprado) + ", " //to_string() != toString()
+    + std::to_string(Estado) + ", "       //to_string() es parte de std
+    + Autor + ", " 
+    + std::to_string(CantPaginas);
+    }; 
