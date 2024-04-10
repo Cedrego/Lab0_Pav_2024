@@ -1,4 +1,12 @@
 /*
+#include <iostream>
+#include "Niño.h"
+#include "Objeto.h"
+#include "Libro.h"
+#include "JuegoMesa.h"
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
 set<Niño*> conjuntoN; //conjunto de Niños
 set<Objeto*> conjuntoO; //conjunto de Objetos
 
