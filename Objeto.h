@@ -13,4 +13,5 @@ class Objeto{
         Objeto::Objeto(std::string Nom, int AnioComprado, ESTADO Estado); //constructor con parametros
         Objeto::~Objeto();
         virtual std::string toString();
+        std::string getNombre();
 };

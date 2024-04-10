@@ -182,9 +182,120 @@ int main(int argc, char *argv[]){
             case '4':{
                 //limpio la pantalla
                 system("CLS");
+                //creo variables que voy a usar despues
+                std::string objetoEliminar;
+                std::set<string> objetosNiño;
+                Objeto *objetoEncontrado=nullptr;
+                char eliminar;
+
+                //pregunto por el nombre
+                std::cout<<"Indique el nombre del Objeto que desea eliminar: ";
+                std::cin>>objetoEliminar;
+
+                //busco el objeto
+                for (Objeto *obj: conjuntoO){
+                    if (obj->getNombre()==objetoEliminar){
+                        objetoEncontrado=obj;
+                    }
+                }
+                //si lo encuentro, pregunto si quiere eliminarlo
+                if (objetoEncontrado!=nullptr){
+                    std::cout<<"Objeto encontrado, seguro que desea eliminarlo?   Y|N:  ";
+                    std::cin>>eliminar;
+                    getchar();
+                    //en caso de confirmar, se procede con la operacion
+                    if (eliminar=='y'||eliminar=='Y'){
+                        conjuntoO.erase(objetoEncontrado);
+                        delete objetoEncontrado;
+
+                        //loop para encontrar si un niño tiene el objeto
+                        for (Niño *niño: conjuntoN){
+                            //creo una lista y guardo los contenidos de ListarObjetosPrestados
+                            objetosNiño=niño->ListarObjetosPrestados();
+                            //recorro la lista de objetos prestados en busca del objeto encontrado
+                            auto it = objetosNiño.find(objetoEncontrado->getNombre());
+                            //si lo encuentra, lo elimina
+                            if (it!=objetosNiño.end()){
+                                niño->devolverObjeto(objetoEncontrado);
+                            }
+                        }
+                        std::cout<<"El objeto ha sido eliminado del sistema"<<endl;
+                    } else{
+                        std::cout<<"Operacion cancelada"<<endl;
+                    }
+                } else{
+                    std::cout<<"El objeto ingresado no existe"<<endl;
+                }
+                std::cout<<"Presione Enter para continuar...";
+                getchar();
                 break;
             }
+
             case '5':{
+                //limpio la pantalla
+                system("CLS");
+                std::string objetoPrestar;
+                std::string niñoPrestar;
+                Niño *nEncontrado=nullptr;
+                Objeto *objetoBuscar=nullptr;
+                std::set<string> objetosNiño;
+                char confirm;
+
+                std::cout<<"Cual objeto desea eliminar?: ";
+                std::cin>>objetoPrestar;
+
+                //busco el objeto
+                for (Objeto *obj: conjuntoO){
+                    if (obj->getNombre()==objetoPrestar){
+                        objetoBuscar=obj;
+                        //si encuentro el objeto, busco si un niño lo tiene
+                        if (objetoBuscar!=nullptr){
+                            //loop para encontrar si un niño tiene el objeto
+                            for (Niño *niño: conjuntoN){
+                                //creo una lista y guardo los contenidos de ListarObjetosPrestados
+                                objetosNiño=niño->ListarObjetosPrestados();
+                                //recorro la lista de objetos prestados en busca del objeto encontrado
+                                auto it = objetosNiño.find(objetoBuscar->getNombre());
+                                //si lo encuentra, se cancela la operacion
+                                if (it!=objetosNiño.end()){
+                                    std::cout<<"Objeto ya prestado a "<<niño->getNombre()<<", operacion interrumpida";
+                                    std::cout<<"Presione Enter para continuar...";
+                                    getchar();
+                                    break;
+                                }
+                            }
+                        //si el loop no encuentra que el objeto haya sido prestado, continua
+                        std::cout<<"A quien desea prestarselo?: ";
+                        std::cin>>niñoPrestar;
+
+                        //busco al niño
+                        for (Niño *ninio: conjuntoN){
+                            if (ninio-> getNombre()==niñoPrestar){
+                            nEncontrado=ninio;
+                            }
+                        }
+                        //si el niño existe, confirmo que quiera prestarle el objeto
+                        if (nEncontrado!=nullptr){
+                        std::cout<<"Niño encontrado, seguro que desea prestar el Objeto?   Y|N:  ";
+                        std::cin>>confirm;
+                        getchar();
+                        if (confirm=='y'||confirm=='Y'){
+                            //se agrega el objeto a la lista de objetos prestados del niño
+                            nEncontrado->prestarObjeto(objetoBuscar);
+                            std::cout<<"Se le ha prestado el objeto al niño"<<endl;
+                        } else{
+                            std::cout<<"Operacion cancelada"<<endl;
+                        }
+                        } else{
+                            //si el niño no existe
+                            std::cout<<"El niño ingresado no existe"<<endl;
+                        }
+                        }
+                    }
+                }
+                
+                std::cout<<"Presione Enter para continuar...";
+                getchar();
                 break;
             }
             case '6':{

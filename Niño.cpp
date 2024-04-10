@@ -14,6 +14,10 @@ void Niño::prestarObjeto(Objeto *objeto){
     objetosPrestados.insert(objeto);
 };
 
+void Niño::prestarObjeto(Objeto *objeto){
+    objetosPrestados.erase(objeto);
+};
+
 std::set<string> Niño::ListarObjetosPrestados(){
     set<string> lista; //creo un set de strings para guardar la lista de objetos prestados
 
