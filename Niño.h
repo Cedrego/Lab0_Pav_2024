@@ -14,6 +14,8 @@ class Niño{
     public:
         Niño::Niño();
         Niño::Niño(std::string Nom2, int Edad, std::string Direccion, std::string Telefono);
+        void prestarObjeto(Objeto *objeto);
         std::set<string> ListarObjetosPrestados();
+        std::string getNombre();
 
 };
