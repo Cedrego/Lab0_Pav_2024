@@ -59,7 +59,7 @@ int main(int argc, char *argv[]){
                 cout<<"Indique el nombre del niño que desea borrar: ";
                 cin>>dedChaild;
                 
-                for (Niño *ninio: conjuntoN){
+                for (Niño *ninio : conjuntoN){
                     if (ninio-> getNombre()==dedChaild){
                         nEncontrado=ninio;
                     }
