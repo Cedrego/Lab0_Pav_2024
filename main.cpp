@@ -1,21 +1,17 @@
-#include <iostream>
-#include "Niño.h"
-#include "Objeto.h"
+#include "Ninio.h"
 #include "Libro.h"
 #include "JuegoMesa.h"
-#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
-using namespace std;
  
 int main(int argc, char *argv[]){
     char op;
-    set<Niño*> conjuntoN; //conjunto de Niños
+    set<Ninio*> conjuntoN; //conjunto de Niños
     set<Objeto*> conjuntoO; //conjunto de Objetos
     do{
         std::cout<<"Bienvenido al sistema de la Biblioteca"<<endl;
-        std::cout<<"1-Añadir Niño"<<endl;
-        std::cout<<"2-Borrar Niño"<<endl;
+        std::cout<<"1-Añadir Ninio"<<endl;
+        std::cout<<"2-Borrar Ninio"<<endl;
         std::cout<<"3-Añadir Objeto"<<endl;
         std::cout<<"4-Eliminar Objeto"<<endl;
         std::cout<<"5-Prestar Objeto"<<endl;
@@ -34,7 +30,7 @@ int main(int argc, char *argv[]){
                 std::string telefonoN;
                 
                 //pregunto por los datos
-                std::cout<<"Ingrese los datos del Niño:"<<endl;
+                std::cout<<"Ingrese los datos del Ninio:"<<endl;
                 std::cout<<"Nombre: ";
                 std::cin>>nombreN;
                 std::cout<<"Edad: ";
@@ -43,7 +39,7 @@ int main(int argc, char *argv[]){
                 std::cin>>direccionN;
                 std::cout<<"Telefono: ";
                 std::cin>>telefonoN;
-                conjuntoN.insert(new Niño(nombreN,stoi(edadN), direccionN, telefonoN));
+                conjuntoN.insert(new Ninio(nombreN,stoi(edadN), direccionN, telefonoN));
                 std::cout<<nombreN<<" ha sido agregado"<<endl;
                 std::cout<<"Presione Enter para continuar...";
                 getchar();
@@ -55,17 +51,17 @@ int main(int argc, char *argv[]){
 
                 std::string dedChaild;
                 char eliminar;
-                Niño* nEncontrado=nullptr;
+                Ninio* nEncontrado=nullptr;
                 cout<<"Indique el nombre del niño que desea borrar: ";
                 cin>>dedChaild;
                 
-                for (Niño *ninio : conjuntoN){
+                for (Ninio *ninio : conjuntoN){
                     if (ninio-> getNombre()==dedChaild){
                         nEncontrado=ninio;
                     }
                 }
                 if (nEncontrado!=nullptr){
-                    std::cout<<"Niño encontrado, seguro que desea eliminarlo?   Y|N:  ";
+                    std::cout<<"Ninio encontrado, seguro que desea eliminarlo?   Y|N:  ";
                     std::cin>>eliminar;
                     getchar();
                     if (eliminar=='y'||eliminar=='Y'){
@@ -82,7 +78,6 @@ int main(int argc, char *argv[]){
                 getchar();
                 break;
             }
-
             case '3':{
                 //limpio la pantalla
                 system("CLS");
@@ -178,7 +173,6 @@ int main(int argc, char *argv[]){
                 getchar();
                 break;
             }
-        
             case '4':{
                 //limpio la pantalla
                 system("CLS");
@@ -209,7 +203,7 @@ int main(int argc, char *argv[]){
                         delete objetoEncontrado;
 
                         //loop para encontrar si un niño tiene el objeto
-                        for (Niño *niño: conjuntoN){
+                        for (Ninio *niño: conjuntoN){
                             //creo una lista y guardo los contenidos de ListarObjetosPrestados
                             objetosNiño=niño->ListarObjetosPrestados();
                             //recorro la lista de objetos prestados en busca del objeto encontrado
@@ -230,13 +224,12 @@ int main(int argc, char *argv[]){
                 getchar();
                 break;
             }
-
             case '5':{
                 //limpio la pantalla
                 system("CLS");
                 std::string objetoPrestar;
                 std::string niñoPrestar;
-                Niño *nEncontrado=nullptr;
+                Ninio *nEncontrado=nullptr;
                 Objeto *objetoBuscar=nullptr;
                 std::set<string> objetosNiño;
                 char confirm;
@@ -251,7 +244,7 @@ int main(int argc, char *argv[]){
                         //si encuentro el objeto, busco si un niño lo tiene
                         if (objetoBuscar!=nullptr){
                             //loop para encontrar si un niño tiene el objeto
-                            for (Niño *niño: conjuntoN){
+                            for (Ninio *niño: conjuntoN){
                                 //creo una lista y guardo los contenidos de ListarObjetosPrestados
                                 objetosNiño=niño->ListarObjetosPrestados();
                                 //recorro la lista de objetos prestados en busca del objeto encontrado
@@ -269,14 +262,14 @@ int main(int argc, char *argv[]){
                         std::cin>>niñoPrestar;
 
                         //busco al niño
-                        for (Niño *ninio: conjuntoN){
+                        for (Ninio *ninio: conjuntoN){
                             if (ninio-> getNombre()==niñoPrestar){
                             nEncontrado=ninio;
                             }
                         }
                         //si el niño existe, confirmo que quiera prestarle el objeto
                         if (nEncontrado!=nullptr){
-                        std::cout<<"Niño encontrado, seguro que desea prestar el Objeto?   Y|N:  ";
+                        std::cout<<"Ninio encontrado, seguro que desea prestar el Objeto?   Y|N:  ";
                         std::cin>>confirm;
                         getchar();
                         if (confirm=='y'||confirm=='Y'){
@@ -299,6 +292,34 @@ int main(int argc, char *argv[]){
                 break;
             }
             case '6':{
+                std::string ninioD;
+                Ninio *nEncontrado=nullptr;
+                Objeto *objetoBuscar=nullptr;
+                std::set<string> objetosNiño;
+                // Limpio la pantalla
+                system("CLS");
+                // --------------------- //
+                std::cout<<"Ingrese nombre del niño dueño de los objetos a mostrar: ";
+                std::cin>>ninioD;
+                //busco al niño
+                for (Ninio *ninio: conjuntoN){
+                    if ( ninio->getNombre() == ninioD){
+                        nEncontrado=ninio;
+                    }
+                }
+                //si el niño existe, confirmo que quiera prestarle el objeto
+                if (nEncontrado!=nullptr){
+                    objetosNiño = nEncontrado->ListarObjetosPrestados();
+                    cout<<"Objetos prestados a "<<nEncontrado->getNombre()<<": "<<endl;
+                    for (auto it=objetosNiño.begin(); it != objetosNiño.end(); ++it){
+                            cout <<endl<< *it;
+                        }
+                } else{
+                    //si el niño no existe
+                    std::cout<<"El niño ingresado no existe"<<endl;
+                }
+                std::cout<<"Presione Enter para continuar...";
+                getchar();
                 break;
             }
             case '7':{

@@ -12,7 +12,8 @@
             ],
             "intelliSenseMode": "windows-gcc-x64",
             "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
-            "configurationProvider": "ms-vscode.cpptools"
+            "configurationProvider": "ms-vscode.cpptools",
+            "cppStandard": "c++23"
         }
     ],
     "version": 4
