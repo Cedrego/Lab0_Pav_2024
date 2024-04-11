@@ -9,7 +9,7 @@ class Libro : public Objeto{
     public:
         Libro();
         ~Libro();
-        Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std::string Autor);
-        std::string toString();  
+        Libro(std::string NomO,int AnioCompradoO,ESTADO EstadoO,int CantPaginasO,std::string AutorO);
+        std::string toString() const;
 };
 #endif

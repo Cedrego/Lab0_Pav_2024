@@ -8,8 +8,8 @@ class JuegoMesa : public Objeto{
         int CantJugadores;
     public:
         JuegoMesa();
-        JuegoMesa(std::string Nom,int AnioComprado,ESTADO Estado,int CantJugadores,int EdadRecomendada);
+        JuegoMesa(std::string NomO,int AnioCompradoO,ESTADO EstadoO,int CantJugadoresO,int EdadRecomendadaO);
         ~JuegoMesa();
-        std::string toString();
+        std::string toString() const;
 };
 #endif

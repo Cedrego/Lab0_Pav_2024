@@ -12,9 +12,9 @@ class Objeto{
         ESTADO Estado; //enum definido en ESTADO.h
     public: 
         Objeto(); //constructor sin parametros
-        Objeto(std::string Nom, int AnioComprado, ESTADO Estado); //constructor con parametros
-        ~Objeto();
-        virtual std::string toString();
+        Objeto(std::string NomO, int AnioCompradoO, ESTADO EstadoO); //constructor con parametros
+        virtual ~Objeto();
+        virtual std::string toString() const=0;
         std::string getNombre();
 };
 

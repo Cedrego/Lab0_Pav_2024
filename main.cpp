@@ -3,13 +3,17 @@
 #include "JuegoMesa.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+using namespace std;
  
 int main(int argc, char *argv[]){
     char op;
     set<Ninio*> conjuntoN; //conjunto de Niños
     set<Objeto*> conjuntoO; //conjunto de Objetos
     do{
+		system("cls");
         std::cout<<"Bienvenido al sistema de la Biblioteca"<<endl;
+        std::cout<<"0-Cargar datos de prueba"<<endl;
         std::cout<<"1-Añadir Ninio"<<endl;
         std::cout<<"2-Borrar Ninio"<<endl;
         std::cout<<"3-Añadir Objeto"<<endl;
@@ -18,11 +22,92 @@ int main(int argc, char *argv[]){
         std::cout<<"6-Listar Objetos Prestados"<<endl;
         std::cout<<"7-Listar Objetos Rotos"<<endl;
         std::cout<<"8-Finalizar programa"<<endl;
-
+		
+		std::cin>>op;
+		getchar();
+		
         switch(op){
+            case '0':{
+                //Inserto Libros de prueba
+                
+                conjuntoO.insert(new Libro("Nacidos de la bruma: El imperio final",2022,static_cast<ESTADO>(2),688,"Brandon Sanderson"));
+                conjuntoO.insert(new Libro("Las Malas",2022,static_cast<ESTADO>(0),240,"Camila Sosa Villada"));
+                conjuntoO.insert(new Libro("El cocodrilo al que no le gustaba el agua",2016,static_cast<ESTADO>(2),32,"Gemma Merino"));
+                /*--------------------*/
+                //Inserto Juegos de Mesa de prueba
+                conjuntoO.insert(new JuegoMesa("Juego Uno",2022,static_cast<ESTADO>(2),10,7));
+                conjuntoO.insert(new JuegoMesa("Mazo de Cartas",2019,static_cast<ESTADO>(0),4,7));
+                conjuntoO.insert(new JuegoMesa("Dados",2020,static_cast<ESTADO>(2),6,2));
+                /*--------------------*/
+                //Inserto Ninios de prueba
+                conjuntoN.insert(new Ninio("María Laura",10,"Nueva Palmira 1521","099298190"));
+                conjuntoN.insert(new Ninio("Alex",5,"Humberto Primo 1501","29094141"));
+                /*--------------------*/
+                //Inserto prestamos de prueba
+                Ninio *nEncontrado=nullptr;
+                Objeto *objetoBuscarA=nullptr;
+                Objeto *objetoBuscarB=nullptr;
+                Objeto *objetoBuscarC=nullptr;
+
+                for (Ninio *ninio: conjuntoN){
+                    if (strcmp(ninio->getNombre().c_str(),"María Laura")==0){
+                                nEncontrado=ninio;
+                        if (nEncontrado!=nullptr){
+                            //busco al niño
+                            for (Objeto *obj: conjuntoO){
+                                if (strcmp(obj->getNombre().c_str(),"Mazo de Cartas")==0){
+                                    objetoBuscarA=obj;
+                                }
+                                if (strcmp(obj->getNombre().c_str(),"Nacidos de la bruma: El imperio final")==0){
+                                    objetoBuscarB=obj;
+                                }
+                                if (strcmp(obj->getNombre().c_str(),"Dados")==0){
+                                    objetoBuscarC=obj;
+                                }
+                            }
+                            if (objetoBuscarA!=nullptr){
+                                nEncontrado->prestarObjeto(objetoBuscarA);
+                            }
+                            if (objetoBuscarB!=nullptr){
+                                nEncontrado->prestarObjeto(objetoBuscarB);
+                            }
+                            if (objetoBuscarC!=nullptr){
+                                nEncontrado->prestarObjeto(objetoBuscarC);
+                            }
+                        }
+                        nEncontrado=nullptr;
+                        objetoBuscarA=nullptr;
+                        objetoBuscarB=nullptr;
+                    }
+                    if (strcmp(ninio->getNombre().c_str(),"Alex")==0){
+                                nEncontrado=ninio;
+                        if (nEncontrado!=nullptr){
+                            //busco al niño
+                            for (Objeto *obj: conjuntoO){
+                                if (strcmp(obj->getNombre().c_str(),"Juego Uno")==0){
+                                    objetoBuscarA=obj;
+                                }
+                                if (strcmp(obj->getNombre().c_str(),"El cocodrilo al que no le gustaba el agua")==0){
+                                    objetoBuscarB=obj;
+                                }
+                            }
+                            if (objetoBuscarA!=nullptr){
+                                nEncontrado->prestarObjeto(objetoBuscarA);
+                            }
+                            if (objetoBuscarB!=nullptr){
+                                nEncontrado->prestarObjeto(objetoBuscarB);
+                            }
+                        }
+                    nEncontrado=nullptr;
+                    objetoBuscarA=nullptr;
+                    objetoBuscarB=nullptr;
+                    }
+                }
+                break;
+            }
             case '1':{
                 //limpio la pantalla
-                system("CLS");
+                system("cls");
                 //creo las variables de niño 
                 std::string nombreN;
                 std::string edadN;
@@ -47,7 +132,7 @@ int main(int argc, char *argv[]){
             }
             case '2':{
                 //limpio la pantalla
-                system("CLS");
+                system("cls");
 
                 std::string dedChaild;
                 char eliminar;
@@ -80,7 +165,7 @@ int main(int argc, char *argv[]){
             }
             case '3':{
                 //limpio la pantalla
-                system("CLS");
+                system("cls");
                 char tipo;
                 std::cout<<"Que tipo de objeto desea ingresar?:\n 1- Libro\n 2-Juego de mesa\n 3-Cancelar"<<endl;
                 cin>>tipo;
@@ -116,10 +201,14 @@ int main(int argc, char *argv[]){
                             //creo una instancia y la inserto en el conjunto
                             Libro *libroNuevo = new Libro(nomL,stoi(anioCompradoL), estadoL, cantPaginasL, autorL);
                             conjuntoO.insert(libroNuevo);
-                            std::cout<<"El Libro ha sido agregado al sistema";
+                            std::cout<<"El Libro ha sido agregado al sistema"<<endl;
+							std::cout<<"Presione Enter para continuar...";
+							getchar();
                             break;
                             } else{
                                 std::cout<<"Operacion cancelada"<<endl;
+								std::cout<<"Presione Enter para continuar...";
+								getchar();
                                 break;
                             }
                        
@@ -155,10 +244,14 @@ int main(int argc, char *argv[]){
                             //creo una instancia y la inserto en el conjunto
                             JuegoMesa *juegoMesaNuevo = new JuegoMesa(nomJM,stoi(anioCompradoJM), estadoJM, cantJugadoresJM, edadRecomendadaJM);
                             conjuntoO.insert(juegoMesaNuevo);
-                            std::cout<<"El Juego de Mesa ha sido agregado al sistema";
+                            std::cout<<"El Juego de Mesa ha sido agregado al sistema"<<endl;
+							std::cout<<"Presione Enter para continuar...";
+							getchar();
                             break;
                             } else{
                                 std::cout<<"Operacion cancelada"<<endl;
+								std::cout<<"Presione Enter para continuar...";
+								getchar();
                                 break;
                             }
                         
@@ -169,16 +262,14 @@ int main(int argc, char *argv[]){
                     }
 
                 }
-                std::cout<<"Presione Enter para continuar...";
-                getchar();
                 break;
             }
             case '4':{
                 //limpio la pantalla
-                system("CLS");
+                system("cls");
                 //creo variables que voy a usar despues
                 std::string objetoEliminar;
-                std::set<string> objetosNiño;
+                std::set<string> objetosNinio;
                 Objeto *objetoEncontrado=nullptr;
                 char eliminar;
 
@@ -200,16 +291,15 @@ int main(int argc, char *argv[]){
                     //en caso de confirmar, se procede con la operacion
                     if (eliminar=='y'||eliminar=='Y'){
                         conjuntoO.erase(objetoEncontrado);
-                        delete objetoEncontrado;
 
                         //loop para encontrar si un niño tiene el objeto
                         for (Ninio *niño: conjuntoN){
                             //creo una lista y guardo los contenidos de ListarObjetosPrestados
-                            objetosNiño=niño->ListarObjetosPrestados();
+                            objetosNinio=niño->ListarObjetosPrestados();
                             //recorro la lista de objetos prestados en busca del objeto encontrado
-                            auto it = objetosNiño.find(objetoEncontrado->getNombre());
+                            auto it = objetosNinio.find(objetoEncontrado->getNombre());
                             //si lo encuentra, lo elimina
-                            if (it!=objetosNiño.end()){
+                            if (it!=objetosNinio.end()){
                                 niño->devolverObjeto(objetoEncontrado);
                             }
                         }
@@ -226,63 +316,63 @@ int main(int argc, char *argv[]){
             }
             case '5':{
                 //limpio la pantalla
-                system("CLS");
+                system("cls");
                 std::string objetoPrestar;
-                std::string niñoPrestar;
+                std::string ninioPrestar;
                 Ninio *nEncontrado=nullptr;
                 Objeto *objetoBuscar=nullptr;
-                std::set<string> objetosNiño;
+                std::set<string> objetosNinio;
                 char confirm;
 
-                std::cout<<"Cual objeto desea eliminar?: ";
+                std::cout<<"Cual objeto desea prestar?: ";
                 std::cin>>objetoPrestar;
-
+				getchar();
                 //busco el objeto
                 for (Objeto *obj: conjuntoO){
-                    if (obj->getNombre()==objetoPrestar){
+                    if (strcmp(obj->getNombre().c_str(),objetoPrestar.c_str())==0){
                         objetoBuscar=obj;
                         //si encuentro el objeto, busco si un niño lo tiene
                         if (objetoBuscar!=nullptr){
                             //loop para encontrar si un niño tiene el objeto
                             for (Ninio *niño: conjuntoN){
                                 //creo una lista y guardo los contenidos de ListarObjetosPrestados
-                                objetosNiño=niño->ListarObjetosPrestados();
+                                objetosNinio=niño->ListarObjetosPrestados();
                                 //recorro la lista de objetos prestados en busca del objeto encontrado
-                                auto it = objetosNiño.find(objetoBuscar->getNombre());
+                                auto it = objetosNinio.find(objetoBuscar->getNombre());
                                 //si lo encuentra, se cancela la operacion
-                                if (it!=objetosNiño.end()){
-                                    std::cout<<"Objeto ya prestado a "<<niño->getNombre()<<", operacion interrumpida";
+                                if (it!=objetosNinio.end()){
+                                    std::cout<<"Objeto ya prestado a "<<niño->getNombre()<<", operacion interrumpida"<<endl;
                                     std::cout<<"Presione Enter para continuar...";
                                     getchar();
                                     break;
                                 }
                             }
-                        //si el loop no encuentra que el objeto haya sido prestado, continua
-                        std::cout<<"A quien desea prestarselo?: ";
-                        std::cin>>niñoPrestar;
+                            //si el loop no encuentra que el objeto haya sido prestado, continua
+                            std::cout<<"A quien desea prestarselo?: ";
+                            std::cin>>ninioPrestar;
 
-                        //busco al niño
-                        for (Ninio *ninio: conjuntoN){
-                            if (ninio-> getNombre()==niñoPrestar){
-                            nEncontrado=ninio;
+                            //busco al niño
+                            for (Ninio *ninio: conjuntoN){
+                                if (ninio-> getNombre()==ninioPrestar){
+                                nEncontrado=ninio;
+                                }
                             }
-                        }
-                        //si el niño existe, confirmo que quiera prestarle el objeto
-                        if (nEncontrado!=nullptr){
-                        std::cout<<"Ninio encontrado, seguro que desea prestar el Objeto?   Y|N:  ";
-                        std::cin>>confirm;
-                        getchar();
-                        if (confirm=='y'||confirm=='Y'){
-                            //se agrega el objeto a la lista de objetos prestados del niño
-                            nEncontrado->prestarObjeto(objetoBuscar);
-                            std::cout<<"Se le ha prestado el objeto al niño"<<endl;
-                        } else{
-                            std::cout<<"Operacion cancelada"<<endl;
-                        }
-                        } else{
-                            //si el niño no existe
-                            std::cout<<"El niño ingresado no existe"<<endl;
-                        }
+                            //si el niño existe, confirmo que quiera prestarle el objeto
+                            if (nEncontrado!=nullptr){
+                            std::cout<<"Ninio encontrado, seguro que desea prestar el Objeto?   Y|N:  ";
+                            std::cin>>confirm;
+                            getchar();
+                            if (confirm=='y'||confirm=='Y'){
+                                //se agrega el objeto a la lista de objetos prestados del niño
+                                nEncontrado->prestarObjeto(objetoBuscar);
+                                std::cout<<"Se le ha prestado el objeto al niño"<<endl;
+                            } else{
+                                std::cout<<"Operacion cancelada"<<endl;
+                            }
+                            } else{
+                                //si el niño no existe
+                                std::cout<<"El niño ingresado no existe"<<endl;
+                            }
                         }
                     }
                 }
@@ -294,10 +384,9 @@ int main(int argc, char *argv[]){
             case '6':{
                 std::string ninioD;
                 Ninio *nEncontrado=nullptr;
-                Objeto *objetoBuscar=nullptr;
-                std::set<string> objetosNiño;
+                std::set<string> objetosNinio;
                 // Limpio la pantalla
-                system("CLS");
+                system("cls");
                 // --------------------- //
                 std::cout<<"Ingrese nombre del niño dueño de los objetos a mostrar: ";
                 std::cin>>ninioD;
@@ -309,9 +398,9 @@ int main(int argc, char *argv[]){
                 }
                 //si el niño existe, confirmo que quiera prestarle el objeto
                 if (nEncontrado!=nullptr){
-                    objetosNiño = nEncontrado->ListarObjetosPrestados();
+                    objetosNinio = nEncontrado->ListarObjetosPrestados();
                     cout<<"Objetos prestados a "<<nEncontrado->getNombre()<<": "<<endl;
-                    for (auto it=objetosNiño.begin(); it != objetosNiño.end(); ++it){
+                    for (auto it=objetosNinio.begin(); it != objetosNinio.end(); ++it){
                             cout <<endl<< *it;
                         }
                 } else{
