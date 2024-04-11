@@ -1,24 +1,24 @@
-#include "Niño.h"
+#include "Ninio.h"
 using namespace std;
 
-Niño::Niño(){};
+Ninio::Ninio(){};
 
-Niño::Niño(std::string Nom2, int Edad, std::string Direccion, std::string Telefono){
+Ninio::Ninio(std::string Nom2, int Edad, std::string Direccion, std::string Telefono){
     this->Nombre=Nom2;
     this->Edad=Edad;
     this->Direccion=Direccion;
     this->Telefono=Telefono;
 };
 
-void Niño::prestarObjeto(Objeto *objeto){
+void Ninio::prestarObjeto(Objeto *objeto){
     objetosPrestados.insert(objeto);
 };
 
-void Niño::prestarObjeto(Objeto *objeto){
+void Ninio::prestarObjeto(Objeto *objeto){
     objetosPrestados.erase(objeto);
 };
 
-std::set<string> Niño::ListarObjetosPrestados(){
+std::set<string> Ninio::ListarObjetosPrestados(){
     set<string> lista; //creo un set de strings para guardar la lista de objetos prestados
 
     //itero en el set de objetos prestados del niño
@@ -30,6 +30,6 @@ std::set<string> Niño::ListarObjetosPrestados(){
     return lista;
 };
 
-std::string Niño::getNombre(){
+std::string Ninio::getNombre(){
     return Nombre;
 }

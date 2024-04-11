@@ -1,3 +1,5 @@
+#ifndef DTOBJETOROTO_H
+#define DTOBJETOROTO_H
 #include <string>
 
 class DTObjetoRoto{
@@ -6,3 +8,4 @@ class DTObjetoRoto{
         bool Prestado;
         std::string NombreNiño;
 };
+#endif
