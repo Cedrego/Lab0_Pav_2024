@@ -7,3 +7,6 @@ Objeto::Objeto(std::string Nom, int AnioComprado, ESTADO Estado){
     this->Estado;
 };
 Objeto::~Objeto(){};
+std::string Objeto::getNombre(){
+    return Nom;
+};
