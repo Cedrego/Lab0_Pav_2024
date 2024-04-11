@@ -12,6 +12,7 @@ class Ninio{
         set<Objeto*> objetosPrestados;
     public:
         Ninio();
+        ~Ninio();
         Ninio(std::string Nom2, int Edad, std::string Direccion, std::string Telefono);
         void prestarObjeto(Objeto *objeto);
         void devolverObjeto(Objeto *objeto); 

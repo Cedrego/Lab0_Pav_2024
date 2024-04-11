@@ -8,6 +8,7 @@ class Libro : public Objeto{
         std::string Autor;
     public:
         Libro();
+        ~Libro();
         Libro(std::string Nom,int AnioComprado,ESTADO Estado,int CantPaginas,std::string Autor);
         std::string toString();  
 };

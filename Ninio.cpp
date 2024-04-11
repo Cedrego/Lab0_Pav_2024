@@ -2,7 +2,7 @@
 using namespace std;
 
 Ninio::Ninio(){};
-
+Ninio::~Ninio(){};
 Ninio::Ninio(std::string Nom2, int Edad, std::string Direccion, std::string Telefono){
     this->Nombre=Nom2;
     this->Edad=Edad;
@@ -14,7 +14,7 @@ void Ninio::prestarObjeto(Objeto *objeto){
     objetosPrestados.insert(objeto);
 };
 
-void Ninio::prestarObjeto(Objeto *objeto){
+void Ninio::devolverObjeto(Objeto *objeto){
     objetosPrestados.erase(objeto);
 };
 
