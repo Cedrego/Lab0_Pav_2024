@@ -33,3 +33,7 @@ std::set<string> Ninio::ListarObjetosPrestados(){
 std::string Ninio::getNombre(){
     return Nombre;
 }
+
+set<Objeto*> Ninio::getObjetosPrestados(){
+    return this->objetosPrestados; 
+}

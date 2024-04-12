@@ -16,6 +16,7 @@ class Objeto{
         virtual ~Objeto();
         virtual std::string toString() const=0;
         std::string getNombre();
+        ESTADO getEstado();
 };
 
 #endif

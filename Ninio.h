@@ -18,6 +18,7 @@ class Ninio{
         void devolverObjeto(Objeto *objeto); 
         std::set<string> ListarObjetosPrestados();
         std::string getNombre();
+        set<Objeto*> getObjetosPrestados();
 
 };
 #endif

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "DTObjetoRoto.h"
 using namespace std;
  
 int main(int argc, char *argv[]){
@@ -137,6 +138,7 @@ int main(int argc, char *argv[]){
                 std::string dedChaild;
                 char eliminar;
                 Ninio* nEncontrado=nullptr;
+                std::set<Objeto*> objetosNinio;
                 cout<<"Indique el nombre del niño que desea borrar: ";
                 cin>>dedChaild;
                 
@@ -150,6 +152,12 @@ int main(int argc, char *argv[]){
                     std::cin>>eliminar;
                     getchar();
                     if (eliminar=='y'||eliminar=='Y'){
+                        //busco si el niño tiene algún objeto prestado
+                        objetosNinio = nEncontrado->getObjetosPrestados();
+                        for (auto it=objetosNinio.begin(); it != objetosNinio.end(); ++it){
+                                //si encuentro alguno, lo vuelvo a insertar en el conjunto de objetos
+                                conjuntoO.insert(*it);
+                        }
                         conjuntoN.erase(nEncontrado);
                         delete nEncontrado;
                         std::cout<<"El niño ha sido eliminado del sistema"<<endl;
@@ -331,23 +339,8 @@ int main(int argc, char *argv[]){
                 for (Objeto *obj: conjuntoO){
                     if (strcmp(obj->getNombre().c_str(),objetoPrestar.c_str())==0){
                         objetoBuscar=obj;
-                        //si encuentro el objeto, busco si un niño lo tiene
+                        //si encuentro el objeto
                         if (objetoBuscar!=nullptr){
-                            //loop para encontrar si un niño tiene el objeto
-                            for (Ninio *niño: conjuntoN){
-                                //creo una lista y guardo los contenidos de ListarObjetosPrestados
-                                objetosNinio=niño->ListarObjetosPrestados();
-                                //recorro la lista de objetos prestados en busca del objeto encontrado
-                                auto it = objetosNinio.find(objetoBuscar->getNombre());
-                                //si lo encuentra, se cancela la operacion
-                                if (it!=objetosNinio.end()){
-                                    std::cout<<"Objeto ya prestado a "<<niño->getNombre()<<", operacion interrumpida"<<endl;
-                                    std::cout<<"Presione Enter para continuar...";
-                                    getchar();
-                                    break;
-                                }
-                            }
-                            //si el loop no encuentra que el objeto haya sido prestado, continua
                             std::cout<<"A quien desea prestarselo?: ";
                             std::cin>>ninioPrestar;
 
@@ -364,7 +357,11 @@ int main(int argc, char *argv[]){
                             getchar();
                             if (confirm=='y'||confirm=='Y'){
                                 //se agrega el objeto a la lista de objetos prestados del niño
+                                //y se elimina del conjunto principal para evitar que se pueda volver a prestar
                                 nEncontrado->prestarObjeto(objetoBuscar);
+                                //ESTA LINEA HACE SALTAR ERROR EN EL CODELITE
+                                //Program Recieved signal SIGSEGV 
+                                conjuntoO.erase(objetoBuscar); 
                                 std::cout<<"Se le ha prestado el objeto al niño"<<endl;
                             } else{
                                 std::cout<<"Operacion cancelada"<<endl;
@@ -373,7 +370,7 @@ int main(int argc, char *argv[]){
                                 //si el niño no existe
                                 std::cout<<"El niño ingresado no existe"<<endl;
                             }
-                        }
+                        } 
                     }
                 }
                 
@@ -396,7 +393,7 @@ int main(int argc, char *argv[]){
                         nEncontrado=ninio;
                     }
                 }
-                //si el niño existe, confirmo que quiera prestarle el objeto
+                //si el niño existe, itero sobre los objetos del niño
                 if (nEncontrado!=nullptr){
                     objetosNinio = nEncontrado->ListarObjetosPrestados();
                     cout<<"Objetos prestados a "<<nEncontrado->getNombre()<<": "<<endl;
@@ -407,11 +404,41 @@ int main(int argc, char *argv[]){
                     //si el niño no existe
                     std::cout<<"El niño ingresado no existe"<<endl;
                 }
-                std::cout<<"Presione Enter para continuar...";
+                std::cout<<"\nPresione Enter para continuar...";
                 getchar();
                 break;
             }
             case '7':{
+                // Limpio la pantalla
+                system("cls");
+                set<Objeto*> objetosNinio;
+                set<DTObjetoRoto*> objetosRotos;
+                
+                for (Objeto *obj:conjuntoO){
+                    if(obj->getEstado()==Roto){
+                        //por la forma en la que esta hecha el programa, si un objeto se encuentra
+                        //en conjuntoO, entonces no esta siendo prestado y por lo tanto se registra de esta manera
+                        objetosRotos.insert(new DTObjetoRoto(obj->getNombre(), false, "Nadie" ));
+                    }
+                }
+                for(Ninio *child:conjuntoN){
+                    objetosNinio=child->getObjetosPrestados();
+                    for (Objeto *objeto:objetosNinio){
+                            if(objeto->getEstado()==Roto){
+                               objetosRotos.insert(new DTObjetoRoto(objeto->getNombre(), true, child->getNombre())); 
+                            }
+                        }
+                }
+                if (objetosRotos.empty()){
+                    std::cout<<"No hay objetos rotos"<<endl;
+                } else{
+                    std::cout<<"Los objetos rotos son: ";
+                    for(DTObjetoRoto *rotos:objetosRotos){
+                        std::cout<<rotos->getNombreObjeto()<<", "<<rotos->getPrestado()<<", "<<rotos->getNombreNinio()<<endl;
+                    }
+                }
+                std::cout<<"Presione Enter para continuar...";
+                getchar();
                 break;
             }
         };

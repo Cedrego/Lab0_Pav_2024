@@ -13,3 +13,6 @@ std::string Objeto::getNombre(){
 
 Objeto::~Objeto(){};
 
+ESTADO Objeto::getEstado(){
+    return Estado;
+}
