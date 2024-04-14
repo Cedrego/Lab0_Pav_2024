@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <limits>
 #include "DTObjetoRoto.h"
 using namespace std;
  
@@ -68,12 +69,15 @@ int main(int argc, char *argv[]){
                             }
                             if (objetoBuscarA!=nullptr){
                                 nEncontrado->prestarObjeto(objetoBuscarA);
+                                conjuntoO.erase(objetoBuscarA); 
                             }
                             if (objetoBuscarB!=nullptr){
                                 nEncontrado->prestarObjeto(objetoBuscarB);
+                                conjuntoO.erase(objetoBuscarB); 
                             }
                             if (objetoBuscarC!=nullptr){
                                 nEncontrado->prestarObjeto(objetoBuscarC);
+                                conjuntoO.erase(objetoBuscarC); 
                             }
                         }
                         nEncontrado=nullptr;
@@ -94,9 +98,11 @@ int main(int argc, char *argv[]){
                             }
                             if (objetoBuscarA!=nullptr){
                                 nEncontrado->prestarObjeto(objetoBuscarA);
+                                conjuntoO.erase(objetoBuscarA); 
                             }
                             if (objetoBuscarB!=nullptr){
                                 nEncontrado->prestarObjeto(objetoBuscarB);
+                                conjuntoO.erase(objetoBuscarB); 
                             }
                         }
                     nEncontrado=nullptr;
@@ -180,6 +186,7 @@ int main(int argc, char *argv[]){
                 cin>>tipo;
                 switch(tipo){
                     case '1':{
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         //Creo variables
                         std::string nomL;
                         std::string anioCompradoL;
@@ -195,13 +202,15 @@ int main(int argc, char *argv[]){
                         std::getline(std::cin,nomL);
                         std::cout<<"Anio comprado: ";
                         std::getline(std::cin,anioCompradoL);
+                        std::cout<<"Autor: ";
+                        std::getline(std::cin,autorL);
+                        std::cout<<"Cantidad de paginas:";
+                        std::cin>>cantPaginasL;
                         std::cout<<"Estado (0-Nuevo, 1-Bien Conservado, 2-Roto): ";
                         std::cin>>Estado;
                         estadoL = static_cast<ESTADO>(Estado);  
-                        std::cout<<"Cantidad de paginas:";
-                        std::cin>>cantPaginasL;
-                        std::cout<<"Autor: ";
-                        std::getline(std::cin,autorL);
+                        
+                        
                         
                         std::cout<<"Seguro que desea ingresar este Libro?   Y|N:  ";
                         std::cin>>confirmacion;
@@ -223,6 +232,7 @@ int main(int argc, char *argv[]){
                        
                     }
                     case '2':{
+                        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                         //Creo variables
                         std::string nomJM;
                         std::string anioCompradoJM;
