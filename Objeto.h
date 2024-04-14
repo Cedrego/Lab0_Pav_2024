@@ -4,6 +4,7 @@
 #include <string>
 using namespace std;
 
+//solia tener su propio .h, pero rompia el makefile
 enum ESTADO {
     Nuevo,
     BienConservado,
@@ -14,7 +15,7 @@ class Objeto{
     protected:
         std::string Nom;
         int AnioComprado;
-        ESTADO Estado; //enum definido en ESTADO.h
+        ESTADO Estado; 
     public: 
         Objeto(); //constructor sin parametros
         Objeto(std::string NomO, int AnioCompradoO, ESTADO EstadoO); //constructor con parametros
