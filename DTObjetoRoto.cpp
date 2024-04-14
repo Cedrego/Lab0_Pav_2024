@@ -19,3 +19,12 @@ bool DTObjetoRoto::getPrestado(){
 std::string DTObjetoRoto::getNombreNinio(){
     return this->NombreNinio;
 };
+
+// Sobrecarga del operador de inserción de flujo
+std::ostream& operator<<(std::ostream& os, const DTObjetoRoto& obj) {
+    os << obj.NombreObjeto << ", Prestado " << (obj.Prestado ? "SI" : "NO");
+    if (obj.Prestado) {
+        os << ", " << obj.NombreNinio;
+    }
+    return os;
+};

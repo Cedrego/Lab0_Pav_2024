@@ -1,6 +1,7 @@
 #ifndef DTOBJETOROTO_H
 #define DTOBJETOROTO_H
 #include <string>
+#include <iostream>
 
 class DTObjetoRoto{
     private:
@@ -14,5 +15,6 @@ class DTObjetoRoto{
         std::string getNombreObjeto();
         bool getPrestado();
         std::string getNombreNinio();
-};
+        friend std::ostream& operator<<(std::ostream& os, const DTObjetoRoto& obj);
+};      
 #endif
