@@ -1,9 +1,14 @@
 #ifndef OBJETO_H
 #define OBJETO_H
-#include "ESTADO.h"
 #include <iostream>
 #include <string>
 using namespace std;
+
+enum ESTADO {
+    Nuevo,
+    BienConservado,
+    Roto
+};
 
 class Objeto{
     protected:

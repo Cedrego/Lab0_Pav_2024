@@ -129,6 +129,7 @@ int main(int argc, char *argv[]){
                 std::cout<<nombreN<<" ha sido agregado"<<endl;
                 std::cout<<"Presione Enter para continuar...";
                 getchar();
+                getchar();
                 break;
             }
             case '2':{
@@ -278,14 +279,16 @@ int main(int argc, char *argv[]){
                 //creo variables que voy a usar despues
                 std::string objetoEliminar;
                 std::set<string> objetosNinio;
+                Ninio *duenio;
                 Objeto *objetoEncontrado=nullptr;
+                bool objetoPrestado=false;
                 char eliminar;
 
                 //pregunto por el nombre
                 std::cout<<"Indique el nombre del Objeto que desea eliminar: ";
                 std::cin>>objetoEliminar;
 
-                //busco el objeto
+                //busco el objeto en el conjuntoO
                 for (Objeto *obj: conjuntoO){
                     if (obj->getNombre()==objetoEliminar){
                         objetoEncontrado=obj;
@@ -299,25 +302,62 @@ int main(int argc, char *argv[]){
                     //en caso de confirmar, se procede con la operacion
                     if (eliminar=='y'||eliminar=='Y'){
                         conjuntoO.erase(objetoEncontrado);
-
-                        //loop para encontrar si un niño tiene el objeto
-                        for (Ninio *niño: conjuntoN){
-                            //creo una lista y guardo los contenidos de ListarObjetosPrestados
-                            objetosNinio=niño->ListarObjetosPrestados();
-                            //recorro la lista de objetos prestados en busca del objeto encontrado
-                            auto it = objetosNinio.find(objetoEncontrado->getNombre());
-                            //si lo encuentra, lo elimina
-                            if (it!=objetosNinio.end()){
-                                niño->devolverObjeto(objetoEncontrado);
-                            }
-                        }
                         std::cout<<"El objeto ha sido eliminado del sistema"<<endl;
                     } else{
                         std::cout<<"Operacion cancelada"<<endl;
                     }
                 } else{
-                    std::cout<<"El objeto ingresado no existe"<<endl;
-                }
+                    //si no lo encuentro en el conjuntoO, pruebo en conjuntoN
+                    //loop para encontrar si un ninio tiene el objeto
+                        for (Ninio *ninio: conjuntoN){
+                            //creo una lista y guardo los contenidos de ListarObjetosPrestados
+                            objetosNinio=ninio->ListarObjetosPrestados();
+                            for (Objeto *obj: ninio->getObjetosPrestados()){
+                                if (obj->getNombre()==objetoEliminar){
+                                    objetoEncontrado=obj;
+                                }
+                            }
+                            if(objetosNinio.empty()){
+                                std::cout<<"EL CONJUNTO DE OBJETOS DEL NINIO ESTA VACIO"<<endl;
+                            }
+                            std::cout<<objetoEncontrado->getNombre()<<endl;
+                            for (const auto& objeto : objetosNinio) {
+                            std::cout << objeto << std::endl;
+                            }
+
+                            //recorro la lista de objetos prestados en busca del objeto encontrado
+                            //si lo encuentro, guardo la localizacion del niño 
+                            std::cout<<"objetosNinio.count(objetoEncontrado->getNombre()) > 0"<<endl;
+                                getchar();
+                            
+                            if (objetosNinio.count(objetoEncontrado->getNombre()) > 0){
+                                std::cout<<"objetosNinio.count(objetoEncontrado->getNombre()) > 0"<<endl;
+                                getchar();
+                            
+                                std::cout<<"objetoPrestado=true"<<endl;
+                                getchar();
+                                objetoPrestado=true;
+                                std::cout<<"duenio=ninio"<<endl;
+                                getchar();
+                                duenio=ninio;
+                                getchar();
+                            }
+                        } 
+                        //si la variable objetoPrestado es true (es decir, encontré el objeto si fue prestado)
+                        if(objetoPrestado){
+                            //confirmo si quiere eliminarlo
+                            std::cout<<"Objeto encontrado, seguro que desea eliminarlo?   Y|N:  ";
+                            std::cin>>eliminar;
+                            if (eliminar=='y'||eliminar=='Y'){
+                                duenio->devolverObjeto(objetoEncontrado);
+                                std::cout<<"El objeto ha sido eliminado del sistema"<<endl;
+                                } else{
+                                    std::cout<<"Operacion cancelada"<<endl;
+                                }
+                        } else{
+                            std::cout<<"El objeto indicado no existe"<<endl;
+                        }
+                }  
                 std::cout<<"Presione Enter para continuar...";
                 getchar();
                 break;
@@ -359,8 +399,6 @@ int main(int argc, char *argv[]){
                                 //se agrega el objeto a la lista de objetos prestados del niño
                                 //y se elimina del conjunto principal para evitar que se pueda volver a prestar
                                 nEncontrado->prestarObjeto(objetoBuscar);
-                                //ESTA LINEA HACE SALTAR ERROR EN EL CODELITE
-                                //Program Recieved signal SIGSEGV 
                                 conjuntoO.erase(objetoBuscar); 
                                 std::cout<<"Se le ha prestado el objeto al niño"<<endl;
                             } else{

@@ -1,7 +1,5 @@
 #include "DTObjetoRoto.h"
 
-DTObjetoRoto::DTObjetoRoto(){};
-
 DTObjetoRoto::DTObjetoRoto(std::string NombreObjetoR, bool PrestadoR, std::string NombreNinioR){
     this->NombreObjeto=NombreObjetoR;
     this->Prestado=PrestadoR;
