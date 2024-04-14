@@ -21,7 +21,7 @@ void Ninio::devolverObjeto(Objeto *objeto){
 std::set<string> Ninio::ListarObjetosPrestados(){
     set<string> lista; //creo un set de strings para guardar la lista de objetos prestados
 
-    //itero en el set de objetos prestados del niño
+    //itero en el set de objetos prestados del ninio
     for(Objeto* objeto : objetosPrestados){
         //por cada objeto prestado, inserto en la lista
         lista.insert(objeto->toString());
