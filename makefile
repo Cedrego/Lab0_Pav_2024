@@ -1,5 +1,4 @@
 # Makefile para laboratorio 0: Brun, Cedrés, Da Costa, Molina, Nuñez
-# Puede que tenga que ejecutarlo como "make -f makefile.txt"
 # ###Variables####
 CC= g++
 CFLAGS = -Wall -g
